@@ -144,11 +144,11 @@ DOWNLOADED: 4612 - FOUND: 2
 <p>İnternet üzerinden online bir şekilde derlendiğinde çıkan sonuç aşağıdaki gibidir...</p>
 <pre>ud64:1M!#64@ud</pre>
 <p>Aslında biraz john çıktısını andırıyor. Bundan dolayı aklıma ilk olarak ssh geldi.</p>
-
+<hr>
 <h3>2	Zayıflık Tarama</h3>
 <p>ssh sürümü için internette exploit taraması yaptım ancak sonuç alabildiğim bir şey olmadı</p>
 <p>py server için internette exploit taraması yaptım ancak sonuç alabildiğim bir şey olmadı</p>
-
+<hr>
 <h3>3	Sisteme Sızma</h3>
 <pre>ssh ud64@192.168.171.137 -p 1337</pre>
 <p>Şifre olarak 1M!#64@ud girdiğimizde içerdeyiz.</p>
