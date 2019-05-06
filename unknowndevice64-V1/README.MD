@@ -197,7 +197,7 @@ User ud64 may run the following commands on unknowndevice64_v1:
 </pre>
 <p>/usr/bin/sysud64 -h yaptığımızda çıkan parametrelre bir fikir veriyordu ancak /usr/bin/sysud64 -V komutu ile bu uygulamanın bir strace olduğunu anladım. Strace ile birlikte çalıştırılan programlarda, programlara bağlanan stract sistem kaynaklarının nasıl kullanıldığını görmemize sağlar. Genel olarak debug ile ilgilenen ya da gömülü sistemcilerin kullandığı bir yapıdır.</p>
 <hr>
-<h4>4	Yetki Yükseltme</h4>
+<h3>4	Yetki Yükseltme</h3>
 <pre>bash-4.4$ ls /usr/bin/sysud64 -al</pre>
 <pre>
 -rwxr-xr-x 1 root root 957688 Dec 31 07:15 /usr/bin/sysud64
