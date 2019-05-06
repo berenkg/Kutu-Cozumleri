@@ -3,6 +3,8 @@
 <strong>Tarih:</strong>05.05.2019<br>
 <strong>IP:</strong>192.168.171.136<br>
 <strong>Not:</strong>Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.<br>
+<strong>Flag:</strong> /root/flag.txt'yi oku<br>
+<strong>Sayfa:</strong>https://www.vulnhub.com/entry/unknowndevice64-1,293/
 <hr>
 <h3>1.	Bilgi Toplama</h3>
 <h4>1.1	Ip Tespiti:</h4>
@@ -155,7 +157,7 @@ DOWNLOADED: 4612 - FOUND: 2
 <pre>ud64@unknowndevice64_v1:~$ whoami</pre>
 <pre>ud64</pre>
 <p>Terminalde bazı komutların çalışmadığını gördüm örnek olarak ls gibi bunun üzerine PATH'e bakmaya karar verdim.</p>
-<pre>ud64@unknowndevice64_v1:~$ echo $PATH/pre>
+<pre>ud64@unknowndevice64_v1:~$ echo $PATH</pre>
 <pre>/home/ud64/prog</pre>
 <p>PATH için bazı eklemeler yapmalıyız.</p>
 <pre>ud64@unknowndevice64_v1:~$ PATH = $PATH:/usr/bin/:/bin/:</pre>
