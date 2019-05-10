@@ -155,7 +155,9 @@ DOWNLOADED: 32284 - FOUND: 12
 ```
 Genelde klasörler wordpress'e ait klasörler ancak `http://192.168.171.140/ipdata/` isimli klasör biraz ilginç geldi tarayıcı üzerinden adrese gittiğimde bir `.cap` dosyası gördüm. `Wireshark` aracı ile bu dosyayı incelemeye başlayalım.
 
-![](dosyalar/wireshark.png | width=100)
+<div align="center">
+    <img src="dosyalar/wireshark.png" style="width:100%;">
+</div>
 
 
 
