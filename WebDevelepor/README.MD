@@ -1,10 +1,10 @@
 # UNKNOWNDEVICE64-V1 Kutusunun Çözümü
-**Yazar:**Beren Kuday GÖRÜN
-**Tarih:**10.05.2019
-**IP:**192.168.171.136
-**Not:**Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.
+***Yazar:** Beren Kuday GÖRÜN
+**Tarih:** 10.05.2019
+**IP:** 192.168.171.136
+**Not:** Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.
 **Flag:** /root/flag.txt'yi oku
-**Sayfa:**
+**Sayfa:** https://www.vulnhub.com/entry/web-developer-1,288/
 
 ## 1.	Bilgi Toplama
 
