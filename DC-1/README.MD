@@ -1,9 +1,9 @@
 # DC-1: 1 Kutusunun Çözümü
-**Yazar:** Beren Kuday GÖRÜN
-**Tarih:**06.05.2019
-**IP:**192.168.171.136
-**Not:**Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.
-**Sayfa:**https://www.vulnhub.com/entry/dc-1-1,292/
+**Yazar:** Beren Kuday GÖRÜN<br>
+**Tarih:** 06.05.2019<br>
+**IP:** 192.168.171.136<br>
+**Not:** Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.<br>
+**Sayfa:** https://www.vulnhub.com/entry/dc-1-1,292/
 
 ## 1.	Bilgi Toplama
 ### IP Tespiti

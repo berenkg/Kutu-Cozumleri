@@ -1,10 +1,10 @@
 # UNKNOWNDEVICE64-V1 Kutusunun Çözümü
-**Yazar:**Beren Kuday GÖRÜN
-**Tarih:**05.05.2019
-**IP:**192.168.171.136
-**Not:**Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.
-**Flag:** /root/flag.txt'yi oku
-**Sayfa:**https://www.vulnhub.com/entry/unknowndevice64-1,293/
+**Yazar:** Beren Kuday GÖRÜN<br>
+**Tarih:** 05.05.2019<br>
+**IP:** 192.168.171.136<br>
+**Not:** Kutunun indirme adresi 'kutu' isimli klasöre eklenmiştir.<br>
+**Flag:** /root/flag.txt'yi oku<br>
+**Sayfa:** https://www.vulnhub.com/entry/unknowndevice64-1,293/
 
 ## 1.	Bilgi Toplama
 ### 1.1	Ip Tespiti:
