@@ -4,6 +4,7 @@
 </div>
 <h3>Giriş</h3>
 Siber Güvenlik alanında kariyer planları yapan arkadaşlar için hazırlmış olduğum türkçe bir kaynaktır. Bu kaynak içerisinde zafiyetli makinelerin çözümlerini bulacaksınız ve her hafta eklemeler yapılacaktır. Bütün makinelerde kullanılan araçlara göre aşağıda katagorize edilmiştir. Bu sayede hangi araç/konu üstünde kendinizi geliştirmek isterseniz o makine üzerinde çalışma yapabilirsiniz.
+Her makine çözümünde kullanılan önemli dosyalar ya da dış kaynaklar dosyalar klasörüne eklenmiştir. Ayrıca makinelerin indirme dosyaları kutu klasörü içerisine eklenmiştir.
 <h3>Kutular</h3>
 <ul>
   <li>DC-1: Popüler bir uygulamanın exploitini açık kaynaklarda araştırıp makine içerisine sızmanız istenmektedir. Daha sonra normal kullanıcı olarak çalıştırıabileceğiniz yüksek yetkili uygulamalar aracılığı ile sistemde root olmanız beklemektedir.</li>
