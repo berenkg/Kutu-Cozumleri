@@ -946,7 +946,7 @@ drwxr-xr-x 4 root root 4096 Jan 12 00:29 node_modules
 -rw-r--r-- 1 root root  255 Jan 12 00:29 package-lock.json
 drwxr-xr-x 2 root root 4096 Feb 20 09:01 Pictures
 ```
-``sh
+```sh
 cd flag
 ls -l
 total 12
@@ -977,6 +977,6 @@ Go here:   http://casino-royale.local:8082
     <p>Bingo</p>
 </div>
 
-### Kaynaklar:### 
+## Kaynaklar:
 https://www.mailboxvalidator.com/resources/articles/smtp-commands-rfc/
 https://depthsecurity.com/blog/exploitation-xml-external-entity-xxe-injection
