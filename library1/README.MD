@@ -454,6 +454,8 @@ cat library.php
 </html>
 globus@ubuntu:~/html$ 
 ```
+
+## 3 Yetki Yükseltme
 Yukarıda var/www/html/ klasörü altına gidip library.php dosyasını okuduktan sonra veri tabanına bağlanmak için gerekli şifre ve kullanıcı adını öğrendim. Bu şifreyi ilk önce globus kullanıcısı için denedim daha sonra root için denediğimde root oldum.
 ```
 globus@ubuntu:~/html$ su root
